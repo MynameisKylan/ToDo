@@ -3,9 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ToDoer</title>
+  <link rel='stylesheet', href='css/reset.css'>
+  <link rel='stylesheet', type='text/css', href='css/style.css'>
 </head>
 <body>
+  <div id='content'>
+    <div id='form-container'>
+      <form id='task-form'>
+        <span id='close'>&times;</span>
+
+        <input placeholder='Title', type='text', id='title'>
+        <textarea placeholder='Description', id='description'></textarea>
   
+        <div>
+          <label for='due-date'>Due Date</label>
+          <input type='date', id='due-date', name='due-date'>
+    
+          <label for='priority'>Priority</label>
+          <select name='priority' id='priority'>
+            <option value='high'>High</option>
+            <option value='normal' selected>Normal</option>
+            <option value='low'>Low</option>
+          </select>
+        </div>
+
+        <button id='create-task'>Create Task</button>
+      </form>
+    </div>
+    
+    <aside id='sidebar'>
+      <p>ToDoer</p>
+      <button id='new-task'>New Task</button>
+      <button id='all-tasks'>All Tasks</button>
+      <ul id='projects'>
+
+      </ul>
+    </aside>
+    <main id='notes'>
+
+    </main>
+  </div>
 </body>
 </html>
