@@ -17,8 +17,8 @@
         <textarea placeholder='Description', id='description'></textarea>
   
         <div>
-          <label for='due-date'>Due Date</label>
-          <input type='date', id='due-date', name='due-date'>
+          <label for='dueDate'>Due Date</label>
+          <input type='date', id='dueDate', name='dueDate'>
     
           <label for='priority'>Priority</label>
           <select name='priority' id='priority'>
@@ -37,11 +37,23 @@
       <button id='new-task'>New Task</button>
       <button id='all-tasks'>All Tasks</button>
       <ul id='projects'>
-
       </ul>
     </aside>
-    <main id='notes'>
-
+    <main id='main'>
+      <ul id='notes'>
+        <li class='note header'>
+          <span>Task</span>
+          <span>Due Date</span>
+          <span>Priority</span>
+          <span>Status</span>
+        </li>
+        <li class='note'>
+          <span>Do laundry</span>
+          <span>11/24/2020</span>
+          <span>Normal</span>
+          <span>Incomplete</span>
+        </li>
+      </ul>
     </main>
   </div>
   <script src='main.js'></script>
