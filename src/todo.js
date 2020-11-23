@@ -1,23 +1,31 @@
-export default (title, description, dueDate, priority, status) => {
-  getTitle = () => {
+export default (title, description, dueDate, priority, completed = false, id = undefined) => {
+  const setId = (id) => {
+    id = id;
+  }
+
+  const getId = () => {
+    return id;
+  }
+
+  const getTitle = () => {
     return title;
   }
 
-  getDescription = () => {
+  const getDescription = () => {
     return description;
   }
 
-  getDueDate = () => {
+  const getDueDate = () => {
     return dueDate;
   }
 
-  getPriority = () => {
+  const getPriority = () => {
     return priority;
   }
   
-  getStatus = () => {
-    return status;
+  const getCompleted = () => {
+    return completed;
   }
 
-  return {getTitle, getDescription, getDueDate, getPriority, getStatus}
+  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId}
 }
