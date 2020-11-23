@@ -1,8 +1,15 @@
 import Todo from './todo';
 import Project from './project';
+import './reset.css';
+import './style.css';
 
 let newBtn = document.getElementById('new-task');
-let taskForm = document.getElementById('task-form');
+let taskForm = document.getElementById('form-container');
 newBtn.onclick = () => {
-  let todo = Todo('test', 'description', '09/25/2020', 'low', 'incomplete');
+  taskForm.style.display = 'flex';
+}
+
+let closeBtn = document.getElementById('close');
+closeBtn.onclick = () => {
+  taskForm.style.display = 'none';
 }

@@ -1,5 +1,57 @@
+@font-face {
+  font-family: 'Belleza';
+  src: url('https://fonts.gstatic.com/s/belleza/v9/0nkoC9_pNeMfhX4BhcH4ag.woff2')
+}
+
+body {
+  font-family: 'Belleza';
+  font-size: 18px;
+}
+
 button {
   cursor:pointer;
+  padding:0.5em;
+  background-color:cadetblue;
+  border:none;
+  margin: 2px 5px;
+  border-radius:5px;
+  color:white;
+  font-family:'Belleza';
+  font-size:1em;
+  display:block;
+}
+
+button:hover {
+  opacity:0.8;
+  transition:all 0.2s ease;
+}
+
+#content {
+  display:flex;
+}
+
+#sidebar {
+  min-height:100vh;
+  background-color:rgba(0,0,0,0.65);
+  width: 250px;
+  display:flex;
+  flex-direction:column;
+}
+
+main {
+  flex:1;
+}
+
+#logo {
+  width:60px;
+}
+
+#logo-title {
+  font-size:3em;
+  display:flex;
+  align-items:center;
+  padding:1rem;
+  color:white;
 }
 
 /* Task Form */
@@ -8,7 +60,7 @@ button {
   position:absolute;
   top:0;
   left:0;
-  display:flex;
+  display:none;
   justify-content:center;
   align-items:center;
   height: 100vh;
