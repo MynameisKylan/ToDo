@@ -1,0 +1,1 @@
+(()=>{"use strict";let t=document.getElementById("new-task");document.getElementById("task-form"),t.onclick=()=>{getTitle=()=>"test",getDescription=()=>"description",getDueDate=()=>"09/25/2020",getPriority=()=>"low",getStatus=()=>"incomplete",getTitle,getDescription,getDueDate,getPriority,getStatus}})();
