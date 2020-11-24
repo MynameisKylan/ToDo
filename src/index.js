@@ -72,6 +72,10 @@ document.getElementById('notes').onclick = (event) => {
       }
     }
     document.getElementById('edit-container').style.display = 'flex';
+  } else if (event.target.getAttribute('class') == 'status-button') {
+    let task = tasks[event.target.id];
+    task.toggleCompleted();
+    displayTasks(tasks);
   }
 }
 
@@ -93,5 +97,6 @@ deleteBtn.onclick = (e) => {
   let id = form.editId.value;
   delete tasks[id];
   save(tasks, id);
+  editForm.style.display = 'none';
   displayTasks(tasks);
 }

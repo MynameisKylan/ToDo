@@ -41,5 +41,9 @@ export default (title, description, dueDate, priority, completed = false, id = u
     return completed;
   }
 
-  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId, update}
+  const toggleCompleted = () => {
+    completed = !completed;
+  }
+
+  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId, update, toggleCompleted}
 }

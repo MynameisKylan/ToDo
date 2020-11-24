@@ -81,13 +81,15 @@ main {
   align-items:center;
 }
 
-.task-link {
+.task-link,
+.status-button {
   cursor:pointer;
   border-radius:5px;
   padding:0.5em;
 }
 
-.task-link:hover {
+.task-link:hover,
+.status-button:hover {
   background-color:rgba(95, 158, 160, 0.3);
   transition:all 0.2s ease;
 }
@@ -132,6 +134,13 @@ main {
 #create-task,
 #update-task {
   margin: 2px 0;
+}
+
+#delete-task {
+  padding:0.3em;
+  background-color:rgb(255, 75, 75);
+  width:120px;
+  margin: 2px auto;
 }
 
 #description {

@@ -28,6 +28,8 @@ export default function (tasks) {
 
     let status = document.createElement('span');
     status.innerHTML = task.getCompleted() ? 'Complete' : 'Incomplete';
+    status.classList.add('status-button');
+    status.id = task.getId();
     note.appendChild(status);
 
     list.appendChild(note);
