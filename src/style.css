@@ -69,7 +69,7 @@ main {
 
 .header {
   font-size:1.2em;
-  border-bottom:1px solid cadetblue;
+  border-bottom:1px solid rgb(95, 158, 160);
   padding-bottom:0.4em;
 }
 
@@ -80,9 +80,20 @@ main {
   margin-bottom:1em;
 }
 
+.task-link {
+  cursor:pointer;
+  border-radius:5px;
+}
+
+.task-link:hover {
+  background-color:rgba(95, 158, 160, 0.3);
+  transition:all 0.2s ease;
+}
+
 /* Task Form */
 
-#form-container {
+#form-container,
+#edit-container {
   position:absolute;
   top:0;
   left:0;
@@ -94,7 +105,8 @@ main {
   background-color:rgba(0,0,0,0.5);
 }
 
-#task-form {
+#task-form,
+#edit-form {
   display:flex;
   flex-direction:column;
   max-width:400px;
@@ -106,7 +118,8 @@ main {
   border-radius:5px;
 }
 
-#task-form > * {
+#task-form > *,
+#edit-form > * {
   padding:1em;
   resize:none;
   border-radius:5px;
@@ -114,19 +127,30 @@ main {
   margin-bottom:4px;
 }
 
+#create-task,
+#update-task {
+  margin: 2px 0;
+}
+
 #description {
   height: 100px;
 }
 
-#close {
+#close-form,
+#close-edit {
   font-size:2em;
   align-self:flex-end;
   padding:0.2em;
   border:none;
+  height:40px;
+  width:40px;
+  text-align:center;
 }
 
-#close:hover,
-#close:focus {
+#close-form:hover,
+#close-edit:hover,
+#close-form:focus,
+#close-edit:focus {
   cursor:pointer;
   color:black;
   background-color:lightgrey;

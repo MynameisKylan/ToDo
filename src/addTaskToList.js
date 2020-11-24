@@ -5,7 +5,7 @@ export default function(task) {
 
   let title = document.createElement('span')
   title.innerHTML = task.getTitle();
-  title.id = list.childElementCount;
+  title.id = list.childElementCount - 1;
   task.setId(title.id);
   title.classList.add('task-link');
   note.appendChild(title);
