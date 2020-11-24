@@ -7,7 +7,7 @@ export default function(tasks, task, id) {
   title.innerHTML = task.getTitle();
   // assign id, add to global hash and increment global count
   title.id = id;
-  tasks[id] = task
+  tasks[id] = task;
   task.setId(title.id);
   
   title.classList.add('task-link');

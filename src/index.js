@@ -2,25 +2,27 @@ import Todo from './todo';
 import Project from './project';
 import displayTasks from './displayTasks';
 import addTaskToList from './addTaskToList';
+import save from './save';
+import load from './load';
 import './reset.css';
 import './style.css';
 
-let tasks = {};
-let id = Object.keys(tasks).length
-console.log(id);
+let tasks = load(localStorage.getItem('tasks')) || {};
+let id = JSON.parse(localStorage.getItem('id')) || 0;
+
+console.log(tasks);
 
 // TODO: CHANGE METHOD OF ID SETTING AND RETRIEVAL. will break if tasks are deleted and then added
 
 // For Development
-let t1 = Todo('test', 'test', '2020-11-26', 'normal')
-addTaskToList(tasks, t1, id);
-id++;
-let t2 = Todo('test2', 'test2', '2020-11-29', 'high')
-addTaskToList(tasks, t2, id);
-id++;
+// let t1 = Todo('test', 'test', '2020-11-26', 'normal')
+// addTaskToList(tasks, t1, id);
+// id++;
+// let t2 = Todo('test2', 'test2', '2020-11-29', 'high')
+// addTaskToList(tasks, t2, id);
+// id++;
 // ----------------
-console.log(id);
-// displayTasks(tasks);
+displayTasks(tasks);
 
 let newBtn = document.getElementById('new-task');
 let taskForm = document.getElementById('form-container');
@@ -47,7 +49,9 @@ createBtn.onclick = (e) => {
   let task = Todo(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
   addTaskToList(tasks, task, id);
   id++;
-  // tasks.push(task);
+  save(tasks, id);
+  // localStorage.setItem('tasks', JSON.stringify(tasks));
+  // localStorage.setItem('id', JSON.stringify(id));
   form.reset();
 }
 
@@ -77,8 +81,10 @@ let updateBtn = document.getElementById('update-task')
 updateBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('edit-form');
-  let todo = tasks[parseInt(form.editId.value)];
+  let todo = tasks[form.editId.value];
   console.log(todo);
   todo.update(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
+  save(tasks, id);
+  // localStorage.setItem('tasks', JSON.stringify(tasks));
   displayTasks(tasks);
 }
