@@ -1,5 +1,8 @@
 export default function (tasks) {
   let list = document.getElementById('notes');
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
 
   tasks.forEach((task) => {
     let note = document.createElement('li');

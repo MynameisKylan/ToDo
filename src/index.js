@@ -51,6 +51,7 @@ document.getElementById('notes').onclick = (event) => {
     let id = event.target.id;
     let task = tasks[parseInt(id)];
     let form = document.getElementById('edit-form');
+    form.editId.value = id;
     form.title.value = task.getTitle();
     form.description.value = task.getDescription();
     form.dueDate.value = task.getDueDate();
@@ -58,11 +59,20 @@ document.getElementById('notes').onclick = (event) => {
     let priority = form.priority;
     for (let i, j = 0; i = priority.options[j]; j++) {
       if (i.value == currentPriority) {
-        console.log(i.value);
         priority.selectedIndex = j;
         break;
       }
     }
     document.getElementById('edit-container').style.display = 'flex';
   }
+}
+
+let updateBtn = document.getElementById('update-task')
+updateBtn.onclick = (e) => {
+  e.preventDefault();
+  let form = document.getElementById('edit-form');
+  let todo = tasks[parseInt(form.editId.value)];
+  console.log(todo);
+  todo.update(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
+  displayTasks(tasks);
 }

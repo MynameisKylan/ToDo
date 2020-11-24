@@ -1,10 +1,24 @@
 export default (title, description, dueDate, priority, completed = false, id = undefined) => {
+  title;
+  description;
+  dueDate;
+  priority;
+  completed;
+  id;
+
   const setId = (id) => {
     id = id;
   }
 
   const getId = () => {
     return id;
+  }
+
+  const update = (newtitle, newDescription, newDueDate, newPriority) => {
+    title = newtitle;
+    description = newDescription;
+    dueDate = newDueDate;
+    priority = newPriority;
   }
 
   const getTitle = () => {
@@ -27,5 +41,5 @@ export default (title, description, dueDate, priority, completed = false, id = u
     return completed;
   }
 
-  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId}
+  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId, update}
 }
