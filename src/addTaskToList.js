@@ -5,7 +5,7 @@ export default function(tasks, task, id) {
 
   let title = document.createElement('span')
   title.innerHTML = task.getTitle();
-  // assign id, add to global hash and increment global count
+  // assign id, add to global hash
   title.id = id;
   tasks[id] = task;
   task.setId(title.id);

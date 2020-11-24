@@ -50,8 +50,6 @@ createBtn.onclick = (e) => {
   addTaskToList(tasks, task, id);
   id++;
   save(tasks, id);
-  // localStorage.setItem('tasks', JSON.stringify(tasks));
-  // localStorage.setItem('id', JSON.stringify(id));
   form.reset();
 }
 
@@ -77,14 +75,23 @@ document.getElementById('notes').onclick = (event) => {
   }
 }
 
-let updateBtn = document.getElementById('update-task')
+let updateBtn = document.getElementById('update-task');
 updateBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('edit-form');
   let todo = tasks[form.editId.value];
-  console.log(todo);
   todo.update(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
   save(tasks, id);
   // localStorage.setItem('tasks', JSON.stringify(tasks));
+  displayTasks(tasks);
+}
+
+let deleteBtn = document.getElementById('delete-task');
+deleteBtn.onclick = (e) => {
+  e.preventDefault();
+  let form = document.getElementById('edit-form');
+  let id = form.editId.value;
+  delete tasks[id];
+  save(tasks, id);
   displayTasks(tasks);
 }
