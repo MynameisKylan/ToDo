@@ -6,8 +6,8 @@ export default (title, description, dueDate, priority, completed = false, id = u
   completed;
   id;
 
-  const setId = (id) => {
-    id = id;
+  const setId = (newId) => {
+    id = newId;
   }
 
   const getId = () => {

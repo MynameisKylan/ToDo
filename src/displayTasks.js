@@ -1,18 +1,21 @@
 export default function (tasks) {
   let list = document.getElementById('notes');
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
+
+  while (list.children.length > 1) {
+    let child = list.lastChild;
+    if (!child.classList.contains('header')) {
+      list.removeChild(child);
+    }
   }
 
-  tasks.forEach((task) => {
+  Object.values(tasks).forEach((task) => {
     let note = document.createElement('li');
     note.classList.add('note');
 
     let title = document.createElement('span')
     title.innerHTML = task.getTitle();
-    // title.id = list.childElementCount - 1;
-    // task.setId(title.id);
     title.classList.add('task-link');
+    title.id = task.getId();
     note.appendChild(title);
 
     let dueDate = document.createElement('span');

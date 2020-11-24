@@ -5,17 +5,21 @@ import addTaskToList from './addTaskToList';
 import './reset.css';
 import './style.css';
 
-let tasks = [];
+let tasks = {};
+let id = Object.keys(tasks).length
+console.log(id);
+
+// TODO: CHANGE METHOD OF ID SETTING AND RETRIEVAL. will break if tasks are deleted and then added
 
 // For Development
 let t1 = Todo('test', 'test', '2020-11-26', 'normal')
-addTaskToList(t1);
-tasks.push(t1);
+addTaskToList(tasks, t1, id);
+id++;
 let t2 = Todo('test2', 'test2', '2020-11-29', 'high')
-addTaskToList(t2);
-tasks.push(t2);
+addTaskToList(tasks, t2, id);
+id++;
 // ----------------
-
+console.log(id);
 // displayTasks(tasks);
 
 let newBtn = document.getElementById('new-task');
@@ -41,13 +45,15 @@ createBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('task-form');
   let task = Todo(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
-  tasks.push(task);
-  addTaskToList(task);
+  addTaskToList(tasks, task, id);
+  id++;
+  // tasks.push(task);
   form.reset();
 }
 
 document.getElementById('notes').onclick = (event) => {
   if (event.target.getAttribute('class') == 'task-link') {
+    console.log(event.target);
     let id = event.target.id;
     let task = tasks[parseInt(id)];
     let form = document.getElementById('edit-form');
