@@ -11,7 +11,7 @@
   <div id='content'>
     <div id='form-container'>
       <form id='task-form'>
-        <span id='close'>&times;</span>
+        <span id='close-form'>&times;</span>
 
         <input placeholder='Title', type='text', id='title'>
         <textarea placeholder='Description', id='description'></textarea>
@@ -31,6 +31,28 @@
         <button id='create-task'>Create Task</button>
       </form>
     </div>
+    <div id='edit-container'>
+      <form id='edit-form'>
+        <span id='close-edit'>&times;</span>
+  
+        <input placeholder='Title', type='text', id='title'>
+        <textarea placeholder='Description', id='description'></textarea>
+  
+        <div>
+          <label for='dueDate'>Due Date</label>
+          <input type='date', id='dueDate', name='dueDate'>
+    
+          <label for='priority'>Priority</label>
+          <select name='priority' id='priority'>
+            <option value='high'>High</option>
+            <option value='normal' selected>Normal</option>
+            <option value='low'>Low</option>
+          </select>
+        </div>
+  
+        <button id='update-task'>Update Task</button>
+      </form>
+    </div>
     
     <aside id='sidebar'>
       <span id='logo-title'><img id='logo', src='https://images-na.ssl-images-amazon.com/images/I/31S0Ht7jUyL.png'>ToDoer</span>
@@ -46,12 +68,6 @@
           <span>Due Date</span>
           <span>Priority</span>
           <span>Status</span>
-        </li>
-        <li class='note'>
-          <span>Do laundry</span>
-          <span>11/24/2020</span>
-          <span>Normal</span>
-          <span>Incomplete</span>
         </li>
       </ul>
     </main>
