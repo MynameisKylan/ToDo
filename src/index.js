@@ -108,7 +108,8 @@ defaultBtn.onclick = (e) => {
   e.preventDefault();
   let header = document.getElementById('main-header');
   header.innerHTML = 'Tasks';
-  displayTasks(projects[0].getTasks());
+  currentProject = projects[0];
+  displayTasks(currentProject.getTasks());
 }
 
 let newProjectBtn = document.getElementById('new-project');
