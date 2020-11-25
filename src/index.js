@@ -9,9 +9,7 @@ import saveIDs from './saveIDs';
 import './reset.css';
 import './style.css';
 
-// let tasks = load(localStorage.getItem('tasks')) || {};
 let taskID = JSON.parse(localStorage.getItem('taskID')) || 0;
-// TODO: load projects from localStorage
 let projects;
 if (localStorage.getItem('projects') === null) {
   projects = {0: Project('default', 0)}; // Default project
@@ -21,8 +19,6 @@ if (localStorage.getItem('projects') === null) {
 let projectID = JSON.parse(localStorage.getItem('projectID')) || 1;
 let currentProject = projects[0]; // Default project
 
-console.log(projects);
-console.log(currentProject.getTasks());
 displayTasks(currentProject.getTasks());
 displayProjects(projects);
 
