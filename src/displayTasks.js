@@ -32,6 +32,8 @@ export default function (tasks) {
     status.id = task.getId();
     note.appendChild(status);
 
+    status.style.backgroundColor = task.getCompleted() ? 'lightgreen' : '';
+
     list.appendChild(note);
   })
 }

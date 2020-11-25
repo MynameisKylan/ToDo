@@ -48,7 +48,7 @@ button:hover {
   color:white;
 }
 
-#new-task {
+#new-project {
   margin-bottom:2em;
 }
 
@@ -60,6 +60,13 @@ main {
 
 #content {
   display:flex;
+}
+
+#main-header {
+  text-align:center;
+  font-size:2.5em;
+  background-color:rgba(95, 158, 160, 0.8);
+  padding: 0.4em 0;
 }
 
 #notes {
@@ -97,7 +104,8 @@ main {
 /* Task Form */
 
 #form-container,
-#edit-container {
+#edit-container,
+#project-container {
   position:absolute;
   top:0;
   left:0;
@@ -110,7 +118,8 @@ main {
 }
 
 #task-form,
-#edit-form {
+#edit-form,
+#project-form {
   display:flex;
   flex-direction:column;
   max-width:400px;
@@ -132,7 +141,8 @@ main {
 }
 
 #create-task,
-#update-task {
+#update-task,
+#create-project {
   margin: 2px 0;
 }
 
@@ -148,7 +158,8 @@ main {
 }
 
 #close-form,
-#close-edit {
+#close-edit,
+#close-project {
   font-size:2em;
   align-self:flex-end;
   padding:0.2em;
@@ -161,7 +172,8 @@ main {
 #close-form:hover,
 #close-edit:hover,
 #close-form:focus,
-#close-edit:focus {
+#close-edit:focus,
+#close-project:hover {
   cursor:pointer;
   color:black;
   background-color:lightgrey;

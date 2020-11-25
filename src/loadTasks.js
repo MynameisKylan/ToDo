@@ -1,4 +1,4 @@
-import Todo from './todo';
+import Task from './task';
 
 export default function(tasks) {
   if (tasks === null) {
@@ -8,7 +8,7 @@ export default function(tasks) {
   let list = {};
 
   JSON.parse(tasks).map((task) => {
-    return Todo(task.title, task.description, task.dueDate, task.priority, task.completed, task.id)
+    return Task(task.title, task.description, task.dueDate, task.priority, task.completed, task.id)
   }).forEach((task) => {
     list[task.getId()] = task;
   })

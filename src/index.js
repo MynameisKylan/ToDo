@@ -1,28 +1,30 @@
-import Todo from './todo';
+import Task from './task';
 import Project from './project';
 import displayTasks from './displayTasks';
+import displayProjects from './displayProjects';
 import addTaskToList from './addTaskToList';
-import save from './save';
-import load from './load';
+import loadProjects from './loadProjects';
+import saveProjects from './saveProjects';
+import saveIDs from './saveIDs';
 import './reset.css';
 import './style.css';
 
-let tasks = load(localStorage.getItem('tasks')) || {};
-let id = JSON.parse(localStorage.getItem('id')) || 0;
+// let tasks = load(localStorage.getItem('tasks')) || {};
+let taskID = JSON.parse(localStorage.getItem('taskID')) || 0;
+// TODO: load projects from localStorage
+let projects;
+if (localStorage.getItem('projects') === null) {
+  projects = {0: Project('default', 0)}; // Default project
+} else {
+  projects = loadProjects(localStorage.getItem('projects'));
+}
+let projectID = JSON.parse(localStorage.getItem('projectID')) || 1;
+let currentProject = projects[0]; // Default project
 
-console.log(tasks);
-
-// TODO: CHANGE METHOD OF ID SETTING AND RETRIEVAL. will break if tasks are deleted and then added
-
-// For Development
-// let t1 = Todo('test', 'test', '2020-11-26', 'normal')
-// addTaskToList(tasks, t1, id);
-// id++;
-// let t2 = Todo('test2', 'test2', '2020-11-29', 'high')
-// addTaskToList(tasks, t2, id);
-// id++;
-// ----------------
-displayTasks(tasks);
+console.log(projects);
+console.log(currentProject.getTasks());
+displayTasks(currentProject.getTasks());
+displayProjects(projects);
 
 let newBtn = document.getElementById('new-task');
 let taskForm = document.getElementById('form-container');
@@ -46,18 +48,19 @@ let createBtn = document.getElementById('create-task');
 createBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('task-form');
-  let task = Todo(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
-  addTaskToList(tasks, task, id);
-  id++;
-  save(tasks, id);
+  let task = Task(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
+  addTaskToList(currentProject.getTasks(), task, taskID);
+  taskID++;
+  saveProjects(projects);
+  saveIDs(taskID, projectID);
   form.reset();
+  displayTasks(currentProject.getTasks())
 }
 
 document.getElementById('notes').onclick = (event) => {
   if (event.target.getAttribute('class') == 'task-link') {
-    console.log(event.target);
     let id = event.target.id;
-    let task = tasks[parseInt(id)];
+    let task = currentProject.getTasks()[parseInt(id)];
     let form = document.getElementById('edit-form');
     form.editId.value = id;
     form.title.value = task.getTitle();
@@ -73,9 +76,9 @@ document.getElementById('notes').onclick = (event) => {
     }
     document.getElementById('edit-container').style.display = 'flex';
   } else if (event.target.getAttribute('class') == 'status-button') {
-    let task = tasks[event.target.id];
+    let task = currentProject.getTasks()[event.target.id];
     task.toggleCompleted();
-    displayTasks(tasks);
+    displayTasks(currentProject.getTasks());
   }
 }
 
@@ -83,11 +86,10 @@ let updateBtn = document.getElementById('update-task');
 updateBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('edit-form');
-  let todo = tasks[form.editId.value];
-  todo.update(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
-  save(tasks, id);
-  // localStorage.setItem('tasks', JSON.stringify(tasks));
-  displayTasks(tasks);
+  let task = currentProject.getTasks()[form.editId.value];
+  task.update(form.title.value, form.description.value, form.dueDate.value, form.priority.value);
+  saveProjects(projects);
+  displayTasks(currentProject.getTasks());
 }
 
 let deleteBtn = document.getElementById('delete-task');
@@ -95,8 +97,55 @@ deleteBtn.onclick = (e) => {
   e.preventDefault();
   let form = document.getElementById('edit-form');
   let id = form.editId.value;
-  delete tasks[id];
-  save(tasks, id);
+  delete currentProject.getTasks()[id];
+  saveProjects(projects);
   editForm.style.display = 'none';
-  displayTasks(tasks);
+  displayTasks(currentProject.getTasks());
+}
+
+let defaultBtn = document.getElementById('default-tasks');
+defaultBtn.onclick = (e) => {
+  e.preventDefault();
+  let header = document.getElementById('main-header');
+  header.innerHTML = 'Tasks';
+  displayTasks(projects[0].getTasks());
+}
+
+let newProjectBtn = document.getElementById('new-project');
+let projectForm = document.getElementById('project-container');
+newProjectBtn.onclick = () => {
+  projectForm.style.display = 'flex';
+}
+
+let closeProjectBtn = document.getElementById('close-project');
+closeProjectBtn.onclick = () => {
+  projectForm.style.display = 'none';
+}
+
+let createProjectBtn = document.getElementById('create-project');
+createProjectBtn.onclick = (e) => {
+  e.preventDefault();
+  let form = document.getElementById('project-form');
+  let project = Project(form.projectName.value, projectID);
+  projects[projectID] = project;
+  let sidebar = document.getElementById('sidebar');
+  let projectBtn = document.createElement('button');
+  projectBtn.innerHTML = project.getName();
+  projectBtn.id = projectID;
+  projectBtn.classList.add('project-button');
+  projectID++;
+
+  saveProjects(projects);
+
+  sidebar.appendChild(projectBtn);
+}
+
+document.getElementById('sidebar').onclick = (e) => {
+  if (e.target.getAttribute('class') == 'project-button') {
+    let project = projects[e.target.id];
+    let header = document.getElementById('main-header');
+    header.innerHTML = project.getName();
+    currentProject = project;
+    displayTasks(currentProject.getTasks());
+  }
 }

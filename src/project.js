@@ -1,5 +1,5 @@
-export default (name) => {
-  let todos = [];
+export default (name, id) => {
+  let tasks = {};
 
   const getName = () => {
     return name;
@@ -9,13 +9,25 @@ export default (name) => {
     name = newName;
   }
 
-  const add = (todo) => {
-    todos.push(todo);
+  const add = (task, taskID) => {
+    tasks[taskID] = task;
   }
 
-  const remove = (todo) => {
-    todos.splice(todos.indexOf(todo), 1);
+  const remove = (taskID) => {
+    delete tasks[taskID];
   }
 
-  return {getName, changeName, add, remove}
+  const getTasks = () => {
+    return tasks;
+  }
+
+  const getId = () => {
+    return id;
+  }
+
+  const setTasks = (newTasks) => {
+    tasks = newTasks;
+  }
+
+  return {getName, changeName, add, remove, getTasks, getId, setTasks}
 }

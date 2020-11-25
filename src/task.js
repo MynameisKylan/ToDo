@@ -1,10 +1,4 @@
 export default (title, description, dueDate, priority, completed = false, id = undefined) => {
-  title;
-  description;
-  dueDate;
-  priority;
-  completed;
-  id;
 
   const setId = (newId) => {
     id = newId;

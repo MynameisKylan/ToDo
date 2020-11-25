@@ -55,15 +55,26 @@
         <button id='delete-task'>Delete Task</button>
       </form>
     </div>
+    <div id='project-container'>
+      <form id='project-form'>
+        <span id='close-project'>&times;</span>
+        <input placeholder='Project Name', id='projectName'>
+        <button id='create-project'>Create Project</button>
+      </form>
+    </div>
     
     <aside id='sidebar'>
       <span id='logo-title'><img id='logo', src='https://images-na.ssl-images-amazon.com/images/I/31S0Ht7jUyL.png'>ToDoer</span>
       <button id='new-task'>New Task</button>
-      <button id='all-tasks'>All Tasks</button>
+      <button id='new-project'>New Project</button>
+      <button id='default-tasks'>Tasks</button>
       <ul id='projects'>
       </ul>
     </aside>
     <main id='main'>
+      <h1 id='main-header'>
+        Tasks
+      </h1>
       <ul id='notes'>
         <li class='note header'>
           <span>Task</span>
