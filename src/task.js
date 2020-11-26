@@ -1,43 +1,40 @@
 export default (title, description, dueDate, priority, completed = false, id = undefined) => {
-
   const setId = (newId) => {
     id = newId;
-  }
+  };
 
-  const getId = () => {
-    return id;
-  }
+  const getId = () => id;
 
   const update = (newtitle, newDescription, newDueDate, newPriority) => {
     title = newtitle;
     description = newDescription;
     dueDate = newDueDate;
     priority = newPriority;
-  }
+  };
 
-  const getTitle = () => {
-    return title;
-  }
+  const getTitle = () => title;
 
-  const getDescription = () => {
-    return description;
-  }
+  const getDescription = () => description;
 
-  const getDueDate = () => {
-    return dueDate;
-  }
+  const getDueDate = () => dueDate;
 
-  const getPriority = () => {
-    return priority;
-  }
-  
-  const getCompleted = () => {
-    return completed;
-  }
+  const getPriority = () => priority;
+
+  const getCompleted = () => completed;
 
   const toggleCompleted = () => {
     completed = !completed;
-  }
+  };
 
-  return {getTitle, getDescription, getDueDate, getPriority, getCompleted, setId, getId, update, toggleCompleted}
-}
+  return {
+    getTitle,
+    getDescription,
+    getDueDate,
+    getPriority,
+    getCompleted,
+    setId,
+    getId,
+    update,
+    toggleCompleted,
+  };
+};

@@ -1,13 +1,13 @@
 import Project from './project';
 import loadTasks from './loadTasks';
 
-export default function(projects) {
-  let list = {};
+export default (projects) => {
+  const list = {};
   JSON.parse(projects).forEach((object) => {
-    let project = Project(object.name, object.id);
+    const project = Project(object.name, object.id);
     project.setTasks(loadTasks(object.tasks));
     list[project.getId()] = project;
-  })
+  });
 
   return list;
 }
