@@ -58,6 +58,9 @@ createBtn.onclick = (e) => {
   saveIDs(taskID, projectID);
   form.reset();
   displayTasks(currentProject.getTasks());
+  if (window.innerWidth <= 680) {
+    taskForm.style.display='none';
+  }
 };
 
 document.getElementById("notes").onclick = (event) => {
@@ -150,6 +153,9 @@ createProjectBtn.onclick = (e) => {
   saveProjects(projects);
 
   sidebar.appendChild(projectBtn);
+  if (window.innerWidth <= 680) {
+    projectForm.style.display='none';
+  }
 };
 
 document.getElementById("sidebar").onclick = (e) => {
