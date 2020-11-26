@@ -179,3 +179,55 @@ main {
   background-color:lightgrey;
   transition:all 0.2s ease;
 }
+
+@media (orientation: portrait) and (max-width:680px) {
+  #sidebar {
+    display:none;
+    position:absolute;
+    width:100%;
+    background-color:rgb(60,60,60);
+  }
+
+  #main-header {
+    font-size:2em;
+    padding:1rem 0;
+  }
+
+  #menu {
+    position: absolute;
+    right:1em;
+    top:0.5em;
+    cursor:pointer;
+    padding:0.5em;
+    border-radius:5px;
+  }
+
+  #menu:hover {
+    background-color:rgba(0,0,0,0.2);
+    transition:all 0.2s ease;
+  }
+
+  .menu-bar {
+    width: 35px;
+    height: 4px;
+    background-color: black;
+    margin: 6px 0;
+    border-radius:1px;
+  }
+
+  #logo-title {
+    font-size:2em;
+  }
+
+  #logo {
+    width:40px;
+  }
+
+  .priority {
+    display:none;
+  }
+
+  .note {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

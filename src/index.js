@@ -6,6 +6,7 @@ import addTaskToList from "./addTaskToList";
 import loadProjects from "./loadProjects";
 import saveProjects from "./saveProjects";
 import saveIDs from "./saveIDs";
+import mobileCloseSidebar from './mobileCloseSidebar';
 import "./reset.css";
 import "./style.css";
 
@@ -28,6 +29,7 @@ const editForm = document.getElementById("edit-container");
 newBtn.onclick = () => {
   taskForm.style.display = "flex";
   document.getElementById("task-form").reset();
+  mobileCloseSidebar();
 };
 
 const closeBtn = document.getElementById("close-form");
@@ -117,12 +119,14 @@ defaultBtn.onclick = (e) => {
   header.innerHTML = "Tasks";
   currentProject = projects[0];
   displayTasks(currentProject.getTasks());
+  mobileCloseSidebar();
 };
 
 const newProjectBtn = document.getElementById("new-project");
 const projectForm = document.getElementById("project-container");
 newProjectBtn.onclick = () => {
   projectForm.style.display = "flex";
+  mobileCloseSidebar();
 };
 
 const closeProjectBtn = document.getElementById("close-project");
@@ -155,5 +159,16 @@ document.getElementById("sidebar").onclick = (e) => {
     header.innerHTML = project.getName();
     currentProject = project;
     displayTasks(currentProject.getTasks());
+    mobileCloseSidebar();
+  }
+};
+
+const menuBtn = document.getElementById("menu");
+menuBtn.onclick = () => {
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar.style.display === "flex") {
+    sidebar.style.display = "none";
+  } else {
+    sidebar.style.display = "flex";
   }
 };

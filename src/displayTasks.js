@@ -24,6 +24,7 @@ export default (tasks) => {
 
     const priority = document.createElement('span');
     priority.innerHTML = task.getPriority();
+    priority.classList.add('priority');
     note.appendChild(priority);
 
     const status = document.createElement('span');

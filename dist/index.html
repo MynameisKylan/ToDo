@@ -37,11 +37,11 @@
   
         <input placeholder='Title', type='text', id='title'>
         <textarea placeholder='Description', id='description'></textarea>
-  
         <div>
           <label for='dueDate'>Due Date</label>
           <input type='date', id='dueDate', name='dueDate'>
-    
+        </div>
+        <div>
           <label for='priority'>Priority</label>
           <select name='priority' id='priority'>
             <option value='high'>High</option>
@@ -75,11 +75,16 @@
       <h1 id='main-header'>
         Tasks
       </h1>
+      <div id='menu'>
+        <div class='menu-bar'></div>
+        <div class='menu-bar'></div>
+        <div class='menu-bar'></div>
+      </div>
       <ul id='notes'>
         <li class='note header'>
           <span>Task</span>
           <span>Due Date</span>
-          <span>Priority</span>
+          <span class='priority'>Priority</span>
           <span>Status</span>
         </li>
       </ul>
