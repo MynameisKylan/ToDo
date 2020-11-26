@@ -11,3 +11,5 @@ Skills researched/practiced:
 - DOM manipulation via event listeners
 - Developing with Webpack dev tools
 - Using ES6 modules to separate code
+- Setup and use of ESlint
+- Setup of prettier
